@@ -13,7 +13,10 @@ public class Task {
     private Long id;
 
     private String title;
+    // columnDefinition = "TEXT" - неограниченная длинна
+    @Column(name = "description", length = 1000)
     private String description;
+
     private String status;
     private String priority;
 
