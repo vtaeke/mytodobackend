@@ -1,5 +1,6 @@
 package com.example.mytodobackend;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -38,7 +39,8 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
