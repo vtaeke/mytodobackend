@@ -1,5 +1,6 @@
-package com.example.mytodobackend;
+package com.example.mytodobackend.task;
 
+import com.example.mytodobackend.user.User;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -31,6 +32,10 @@ public class Task {
     @Column(name = "tag")
     private List<String> tags;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     // getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -52,4 +57,7 @@ public class Task {
 
     public List<String> getTags() { return tags; }
     public void setTags(List<String> tags) { this.tags = tags; }
+
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 }
