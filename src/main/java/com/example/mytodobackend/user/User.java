@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,6 +21,15 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(name = "firstName")
+    private String firstName;
+
+    @Column(name = "avatar_url")
+    private String avatarUrl;
+
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -61,4 +71,13 @@ public class User implements UserDetails {
     public void setEmail(String email) { this.email = email; }
 
     public void setPassword(String password) { this.password = password; }
+
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public String getAvatarUrl() { return avatarUrl; }
+    public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
+
+    public LocalDate getBirthDate() { return birthDate; }
+    public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
 }
